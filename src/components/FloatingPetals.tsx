@@ -1,0 +1,84 @@
+import React, { useEffect, useState } from 'react';
+import { motion } from 'motion/react';
+
+interface Petal {
+  id: number;
+  x: number;
+  size: number;
+  rotation: number;
+  duration: number;
+  delay: number;
+  color: string;
+  drift: number;
+}
+
+function getPetalCount() {
+  if (typeof window === 'undefined') return 12;
+  const coarse = window.matchMedia('(hover: none) and (pointer: coarse)').matches;
+  const narrow = window.innerWidth < 768;
+  if (coarse || narrow) return 10;
+  return 18;
+}
+
+export const FloatingPetals: React.FC = () => {
+  const [petals, setPetals] = useState<Petal[]>([]);
+
+  useEffect(() => {
+    const colors = ['#d4b896', '#e6d5b8', '#c9a96e', '#f5ebe0'];
+    const count = getPetalCount();
+
+    const newPetals = Array.from({ length: count }).map((_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      size: Math.random() * 8 + 8,
+      rotation: Math.random() * 360,
+      duration: Math.random() * 15 + 15,
+      delay: Math.random() * 20,
+      color: colors[Math.floor(Math.random() * colors.length)],
+      drift: Math.random() * 40 - 20,
+    }));
+    setPetals(newPetals);
+  }, []);
+
+  if (petals.length === 0) return null;
+
+  return (
+    <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      {petals.map((petal) => (
+        <motion.div
+          key={petal.id}
+          className="absolute will-change-transform"
+          style={{ color: petal.color }}
+          initial={{
+            x: `${petal.x}vw`,
+            y: '-10vh',
+            rotate: petal.rotation,
+            opacity: 0,
+          }}
+          animate={{
+            y: '110vh',
+            x: `${petal.x + petal.drift}vw`,
+            rotate: petal.rotation + 720,
+            opacity: [0, 0.5, 0.5, 0],
+          }}
+          transition={{
+            duration: petal.duration,
+            repeat: Infinity,
+            delay: petal.delay,
+            ease: 'linear',
+          }}
+        >
+          <svg
+            width={petal.size}
+            height={petal.size}
+            viewBox="0 0 24 24"
+            fill="currentColor"
+            className="drop-shadow-sm"
+          >
+            <path d="M12,2C12,2 10,6 10,10C10,14 12,22 12,22C12,22 14,14 14,10C14,6 12,2 12,2Z" />
+          </svg>
+        </motion.div>
+      ))}
+    </div>
+  );
+};

@@ -79,15 +79,7 @@ export function InvitationContent({
         </div>
       </DeferredMount>
 
-      {eventParam !== 'homecoming' && (
-        <DeferredMount active={active} delay={300} minHeight="30vh">
-          <div className="py-12 sm:py-32 bg-brand-ivory relative overflow-hidden">
-            <Timeline event={eventParam} />
-          </div>
-        </DeferredMount>
-      )}
-
-      <DeferredMount active={active} delay={360} minHeight="20vh">
+      <DeferredMount active={active} delay={300} minHeight="20vh">
         <div className="py-12 sm:py-32 bg-gradient-to-b from-brand-ivory via-white to-brand-ivory relative overflow-hidden">
           <div className="max-w-6xl mx-auto px-6 mb-16 text-center">
             <span className="text-brand-beige-deep uppercase tracking-[0.4em] text-[10px] sm:text-[11px] font-bold drop-shadow-sm">
@@ -97,6 +89,14 @@ export function InvitationContent({
           <Countdown targetDate={weddingDate} />
         </div>
       </DeferredMount>
+
+      {eventParam !== 'homecoming' && (
+        <DeferredMount active={active} delay={360} minHeight="30vh">
+          <div className="py-12 sm:py-32 bg-brand-ivory relative overflow-hidden">
+            <Timeline event={eventParam} />
+          </div>
+        </DeferredMount>
+      )}
 
       <DeferredMount active={active} delay={420} minHeight="30vh">
         <div className="py-12 sm:py-32 bg-brand-ivory relative overflow-hidden">

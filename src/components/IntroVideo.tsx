@@ -14,6 +14,7 @@ export function IntroVideo({ onComplete, onMusicStart, readyToTransition = true 
   
   const handleStart = () => {
     setStarted(true);
+    if (onMusicStart) onMusicStart();
     // Play video
     if (videoRef.current) {
       videoRef.current.play().catch(console.error);
@@ -21,7 +22,6 @@ export function IntroVideo({ onComplete, onMusicStart, readyToTransition = true 
   };
 
   const handleVideoEnded = () => {
-    if (onMusicStart) onMusicStart();
     onComplete();
   };
 

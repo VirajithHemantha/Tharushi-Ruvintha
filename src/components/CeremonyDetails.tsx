@@ -44,7 +44,7 @@ export const CeremonyDetails: React.FC<CeremonyDetailsProps> = () => {
             </div>
             <div>
               <div className="text-[9px] uppercase tracking-[0.5em] font-bold text-brand-beige-deep/40 font-cinzel">Date</div>
-              <div className="text-sm md:text-base text-brand-beige-deep font-cinzel tracking-wide font-bold">Wednesday, 22 July 2026</div>
+              <div className="text-sm md:text-base text-brand-beige-deep font-cinzel tracking-wide font-bold">Saturday, 26 December 2026</div>
             </div>
           </div>
           <div className="flex items-start gap-4">
@@ -53,7 +53,7 @@ export const CeremonyDetails: React.FC<CeremonyDetailsProps> = () => {
             </div>
             <div>
               <div className="text-[9px] uppercase tracking-[0.5em] font-bold text-brand-beige-deep/40 font-cinzel">Church Ceremony</div>
-              <div className="text-sm md:text-base text-brand-beige-deep font-cinzel tracking-wide font-bold">4:00 PM at Our Lady of Sorrows church, Nainamadama</div>
+              <div className="text-sm md:text-base text-brand-beige-deep font-cinzel tracking-wide font-bold">Our Lady of Sorrows church, Nainamadama</div>
             </div>
           </div>
           <div className="flex items-start gap-4">
@@ -62,7 +62,7 @@ export const CeremonyDetails: React.FC<CeremonyDetailsProps> = () => {
             </div>
             <div>
               <div className="text-[9px] uppercase tracking-[0.5em] font-bold text-brand-beige-deep/40 font-cinzel">Reception</div>
-              <div className="text-sm md:text-base text-brand-beige-deep font-cinzel tracking-wide font-bold">7:00 PM at Suriya resort, Waikkal</div>
+              <div className="text-sm md:text-base text-brand-beige-deep font-cinzel tracking-wide font-bold">Suriya resort, Waikkal</div>
             </div>
           </div>
         </div>

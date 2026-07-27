@@ -3,14 +3,14 @@
 
 @theme {
   /* Beige Color Palette */
-  --color-brand-beige: #b5a695;
-  --color-brand-beige-deep: #5c5246;
-  --color-brand-champagne: #e5e0d8;
-  --color-brand-ivory: #f2efe9;
-  --color-brand-gold: #8f8170;
-  --color-brand-gold-light: #c8bcae;
-  --color-brand-mocha: #3d352d;
-  --color-brand-sand: #d4cec4;
+  --color-brand-beige: #83826e;
+  --color-brand-beige-deep: #4c4c34;
+  --color-brand-champagne: #d9c7bb;
+  --color-brand-ivory: #e7ded9;
+  --color-brand-gold: #83826e;
+  --color-brand-gold-light: #aba99a;
+  --color-brand-mocha: #4c4c34;
+  --color-brand-sand: #aba99a;
 
   --font-serif: "Cormorant Garamond", serif;
   --font-display: "Great Vibes", cursive;

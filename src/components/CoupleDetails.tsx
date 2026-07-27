@@ -18,19 +18,22 @@ export const CoupleDetails: React.FC = () => {
           <div className="h-px w-12 sm:w-20 bg-gradient-to-l from-transparent to-brand-beige-deep/60"></div>
         </div>
         <div className="text-brand-beige-deep space-y-4 text-center">
-          <div className="space-y-4 mb-8">
-            <p className="font-cinzel text-[11px] md:text-sm tracking-[0.4em] mb-2 uppercase font-bold drop-shadow-sm">Two Families Join Hands</p>
-            <div className="flex flex-col items-center justify-center gap-2">
-              <span className="text-sm md:text-base font-cinzel tracking-wider text-stone-700">Mr. Lesly &amp; Mrs. Chintha</span>
-              <span className="font-playball text-3xl text-brand-beige-deep italic my-2">Together with</span>
-              <span className="text-sm md:text-base font-cinzel tracking-wider text-stone-700">Mr. Sunil &amp; Mrs. Priyanka</span>
-            </div>
-          </div>
-          <p className="text-[10px] md:text-[13px] text-stone-600 tracking-[0.2em] md:tracking-[0.4em] uppercase font-medium leading-loose max-w-3xl border-t border-b border-brand-beige/30 py-6 px-4">
+          <p className="text-[11px] md:text-[14px] text-stone-600 tracking-[0.2em] md:tracking-[0.3em] uppercase font-medium leading-loose max-w-3xl border-t border-b border-brand-beige/30 py-8 px-4">
             With hearts full of love, we request the honour of the presence of<br/>
-            <span className="text-brand-beige-deep font-bold text-xs md:text-sm my-2 block">Our Honored Guests</span>
-            to celebrate the joyous marriage of our children<br/>
-            <span className="text-brand-beige-deep font-bold text-lg md:text-2xl my-2 block font-playball">Tharushi &amp; Ruvintha</span>
+            <span className="text-brand-beige-deep font-bold text-sm md:text-base my-4 block font-serif italic tracking-widest">Our Honored Guests</span>
+            to celebrate the joyous marriage of<br/>
+            
+            <span className="text-brand-beige-deep font-bold text-2xl md:text-3xl mt-6 block font-playball">Tharushi Morais</span>
+            <span className="text-sm md:text-base font-cinzel tracking-wider text-stone-700 block mb-4 mt-2">
+              Daughter of Mr. Lakshman Morais &amp; Mrs. Geethani Rajasekara
+            </span>
+            
+            <span className="font-playball text-2xl text-brand-beige-deep italic my-4 block">&amp;</span>
+            
+            <span className="text-brand-beige-deep font-bold text-2xl md:text-3xl block font-playball">Ruvintha Fernando</span>
+            <span className="text-sm md:text-base font-cinzel tracking-wider text-stone-700 block mt-2">
+              Son of Mr. Priyantha Fernando &amp; Mrs. Andrian Fernando
+            </span>
           </p>
         </div>
       </motion.div>

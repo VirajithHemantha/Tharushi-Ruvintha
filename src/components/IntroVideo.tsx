@@ -10,6 +10,7 @@ interface IntroVideoProps {
 
 export function IntroVideo({ onComplete, onMusicStart, readyToTransition = true }: IntroVideoProps) {
   const [started, setStarted] = useState(false);
+  const [isTransitioning, setIsTransitioning] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
   
   const handleStart = () => {
@@ -21,8 +22,18 @@ export function IntroVideo({ onComplete, onMusicStart, readyToTransition = true 
     }
   };
 
+  const handleTimeUpdate = () => {
+    if (!videoRef.current || isTransitioning) return;
+    
+    // The transition will now be handled entirely by the onEnded event
+    // so the video plays from beginning to end.
+  };
+
   const handleVideoEnded = () => {
-    onComplete();
+    if (!isTransitioning) {
+      setIsTransitioning(true);
+      onComplete();
+    }
   };
 
   return (
@@ -32,16 +43,16 @@ export function IntroVideo({ onComplete, onMusicStart, readyToTransition = true 
       exit={{ opacity: 0, transition: { duration: 1.5, ease: "easeInOut" } }}
     >
       {!started && (
-        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-[#e9e2d8] p-4 text-center">
+        <div className="absolute inset-0 z-10 flex flex-col items-center justify-center bg-[#e7ded9] p-4 text-center">
           <div className="mb-10 font-serif">
-            <h1 className="text-4xl md:text-6xl text-[#3d2e1f] mb-4" style={{ fontFamily: '"Great Vibes", cursive' }}>Tharushi & Ruvintha</h1>
-            <p className="text-[#b08968] tracking-[0.3em] uppercase text-xs md:text-sm" style={{ fontFamily: '"Montserrat", sans-serif' }}>Promise of Love</p>
+            <h1 className="text-4xl md:text-6xl text-[#4c4c34] mb-4" style={{ fontFamily: '"Great Vibes", cursive' }}>Tharushi & Ruvintha</h1>
+            <p className="text-[#83826e] tracking-[0.3em] uppercase text-xs md:text-sm" style={{ fontFamily: '"Montserrat", sans-serif' }}>Promise of Love</p>
           </div>
           
           <button 
             onClick={handleStart}
             disabled={!readyToTransition}
-            className={`px-10 py-4 border border-[#c9a96e] text-[#8b6f47] font-serif text-sm tracking-[0.2em] uppercase hover:bg-[#c9a96e] hover:text-white transition-all duration-500 rounded-sm shadow-sm ${!readyToTransition ? 'opacity-50 cursor-not-allowed' : 'opacity-100 cursor-pointer hover:shadow-md hover:-translate-y-1'}`}
+            className={`px-10 py-4 border border-[#83826e] text-[#4c4c34] font-serif text-sm tracking-[0.2em] uppercase hover:bg-[#83826e] hover:text-[#e7ded9] transition-all duration-500 rounded-sm shadow-sm ${!readyToTransition ? 'opacity-50 cursor-not-allowed' : 'opacity-100 cursor-pointer hover:shadow-md hover:-translate-y-1'}`}
           >
             {readyToTransition ? 'View Invitation' : 'Loading...'}
           </button>
@@ -53,6 +64,9 @@ export function IntroVideo({ onComplete, onMusicStart, readyToTransition = true 
         src="/intro_video.mp4"
         className="w-full h-full object-cover"
         playsInline
+        muted
+        autoPlay
+        onTimeUpdate={handleTimeUpdate}
         onEnded={handleVideoEnded}
       />
     </motion.div>

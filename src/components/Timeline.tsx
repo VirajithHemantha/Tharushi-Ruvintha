@@ -2,8 +2,8 @@ import React from 'react';
 import { motion } from 'motion/react';
 
 const events = [
-  { time: '04:00 PM', title: 'Church mass', image: '/images/church_icon.png', desc: 'Our Lady of Sorrows church Nainamadama at 4.00 p.m' },
-  { time: '07:00 PM', title: 'Reception', image: '/images/reception_icon.png', desc: 'Reception at suriya resort Waikkal at 7.00 p.m' },
+  { time: '04:00 PM', title: 'Church mass', image: '/images/church_icon.png', desc: 'Our Lady of Sorrows church Nainamadama' },
+  { time: '07:00 PM', title: 'Reception', image: '/images/reception_icon.png', desc: 'Reception at Grand Ballroom, Suriya resort Waikkal' },
 ];
 
 export const Timeline: React.FC = () => {
@@ -35,9 +35,10 @@ export const Timeline: React.FC = () => {
                 index % 2 === 0 ? 'md:flex-row' : 'md:flex-row-reverse'
               }`}
             >
-              {/* Time */}
+              {/* Content */}
               <div className={`flex-1 text-center ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
-                <span className="text-2xl font-serif text-brand-beige-deep italic">{item.time}</span>
+                <h4 className="text-xl font-display text-stone-800 mb-1">{item.title}</h4>
+                <p className="text-stone-400 text-sm leading-relaxed">{item.desc}</p>
               </div>
 
               {/* Icon Node */}
@@ -45,10 +46,9 @@ export const Timeline: React.FC = () => {
                 <img src={item.image} alt={item.title} className="w-full h-full object-contain" />
               </div>
 
-              {/* Content */}
+              {/* Time */}
               <div className={`flex-1 text-center ${index % 2 === 0 ? 'md:text-left' : 'md:text-right'}`}>
-                <h4 className="text-xl font-display text-stone-800 mb-1">{item.title}</h4>
-                <p className="text-stone-400 text-sm leading-relaxed">{item.desc}</p>
+                <span className="text-2xl font-serif text-brand-beige-deep italic">{item.time}</span>
               </div>
             </motion.div>
           ))}

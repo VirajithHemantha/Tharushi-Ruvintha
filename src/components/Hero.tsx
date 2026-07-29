@@ -117,7 +117,7 @@ export const Hero: React.FC<HeroProps> = ({ event = 'both' }) => {
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8 mb-2 sm:mb-6 relative z-10 px-8 py-2 sm:py-3 mt-0">
             <p className="text-[1.15rem] sm:text-2xl font-serif italic text-stone-900 font-bold tracking-wide px-2 text-center max-w-xl leading-relaxed">
-              Together with our families, we joyfully invite you to join us
+              Two souls, one heart, united in God's love forever.
             </p>
           </div>
 

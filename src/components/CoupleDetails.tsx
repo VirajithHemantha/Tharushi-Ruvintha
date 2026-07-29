@@ -19,20 +19,25 @@ export const CoupleDetails: React.FC = () => {
         </div>
         <div className="text-brand-beige-deep space-y-4 text-center">
           <p className="text-[11px] md:text-[14px] text-stone-600 tracking-[0.2em] md:tracking-[0.3em] uppercase font-medium leading-loose max-w-3xl border-t border-b border-brand-beige/30 py-8 px-4">
-            With hearts full of love, we request the honour of the presence of<br/>
-            <span className="text-brand-beige-deep font-bold text-sm md:text-base my-4 block font-serif italic tracking-widest">Our Honored Guests</span>
-            to celebrate the joyous marriage of<br/>
+            WITH JOYFUL HEARTS,<br/>
+            WE CORDIALLY REQUEST THE HONOUR OF THE PRESENCE OF<br/>
+            <span className="text-brand-beige-deep font-bold text-sm md:text-base my-4 block font-serif italic tracking-widest normal-case capitalize">Our honoured guest</span>
+            AS OUR ESTEEMED GUEST<br/>
+            <br/>
+            TO WITNESS AND CELEBRATE THE HAPPY UNION OF<br/>
             
-            <span className="text-brand-beige-deep font-bold text-2xl md:text-3xl mt-6 block font-playball">Tharushi Morais</span>
-            <span className="text-sm md:text-base font-cinzel tracking-wider text-stone-700 block mb-4 mt-2">
-              Daughter of Mr. Lakshman Morais &amp; Mrs. Geethani Rajasekara
+            <span className="text-brand-beige-deep font-bold text-2xl md:text-3xl mt-6 block font-playball">THARUSHI MORAIS</span>
+            <span className="text-sm md:text-base font-cinzel tracking-wider text-stone-700 block mb-4 mt-2 normal-case">
+              Beloved Daughter of<br/>
+              <span className="font-semibold italic">Mr. Lakshman Morais</span> &amp; <span className="font-semibold italic">Mrs. Geethani Rajasekara</span>
             </span>
             
-            <span className="font-playball text-2xl text-brand-beige-deep italic my-4 block">&amp;</span>
+            <span className="font-playball text-2xl text-brand-beige-deep italic my-4 block">AND</span>
             
-            <span className="text-brand-beige-deep font-bold text-2xl md:text-3xl block font-playball">Ruvintha Fernando</span>
-            <span className="text-sm md:text-base font-cinzel tracking-wider text-stone-700 block mt-2">
-              Son of Mr. Priyantha Fernando &amp; Mrs. Andrian Fernando
+            <span className="text-brand-beige-deep font-bold text-2xl md:text-3xl block font-playball">RUVINTHA FERNANDO</span>
+            <span className="text-sm md:text-base font-cinzel tracking-wider text-stone-700 block mt-2 normal-case">
+              Beloved Son of<br/>
+              <span className="font-semibold italic">Mr. Priyantha Fernando</span> &amp; <span className="font-semibold italic">Mrs. Andrian Fernando</span>
             </span>
           </p>
         </div>

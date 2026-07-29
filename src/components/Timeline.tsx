@@ -2,8 +2,8 @@ import React from 'react';
 import { motion } from 'motion/react';
 
 const events = [
-  { time: '04:00 PM', title: 'Church mass', image: '/images/church_icon.png', desc: 'Our Lady of Sorrows church Nainamadama' },
-  { time: '07:00 PM', title: 'Reception', image: '/images/reception_icon.png', desc: 'Reception at Grand Ballroom, Suriya resort Waikkal' },
+  { time: '04:00 PM', title: 'Church Mass', image: '/images/church_icon.png', desc: 'Our Lady of Sorrows Church, Nainamadama' },
+  { time: '07:00 PM', title: 'Reception', image: '/images/reception_icon.png', desc: 'Grand Ballroom, Suriya Resort, Waikkal' },
 ];
 
 export const Timeline: React.FC = () => {
@@ -38,7 +38,7 @@ export const Timeline: React.FC = () => {
               {/* Content */}
               <div className={`flex-1 text-center ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
                 <h4 className="text-xl font-display text-stone-800 mb-1">{item.title}</h4>
-                <p className="text-stone-400 text-sm leading-relaxed">{item.desc}</p>
+                <p className="text-stone-500 font-serif italic text-lg leading-relaxed">{item.desc}</p>
               </div>
 
               {/* Icon Node */}

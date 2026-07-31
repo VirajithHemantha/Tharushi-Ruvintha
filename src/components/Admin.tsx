@@ -15,7 +15,7 @@ interface GeneratedLink {
 export const Admin: React.FC = () => {
   const [guestTitle, setGuestTitle] = useState('Mr.');
   const [guestName, setGuestName] = useState('');
-  const [selectedEvent, setSelectedEvent] = useState('poruwa');
+  const selectedEvent = 'both';
   const [generatedUrl, setGeneratedUrl] = useState('');
   const [copied, setCopied] = useState(false);
   const [recentLinks, setRecentLinks] = useState<GeneratedLink[]>([]);
@@ -76,6 +76,19 @@ export const Admin: React.FC = () => {
       setTimeout(() => setCopied(false), 3000);
     }).catch(() => {
       toast.error('Failed to copy link. Please select and copy manually.');
+    });
+  };
+
+  const generateMessage = (url: string) => {
+    return `Dear ${guestTitle} ${guestName.trim()} ❤️\n\nWith joyful hearts, we warmly invite you to celebrate one of the most special days of our lives as we begin our journey together.\n\nPlease view our wedding invitation and all the event details through the link below 🌐:\n\n${url}\n\nYour presence would truly mean the world to us, and we would be honored to celebrate this beautiful moment together.\n\nWith love,\n❤️ Tharushi & Ruvintha`;
+  };
+
+  const handleCopyMessage = (url: string) => {
+    const message = generateMessage(url);
+    navigator.clipboard.writeText(message).then(() => {
+      toast.success('Full message copied to clipboard!');
+    }).catch(() => {
+      toast.error('Failed to copy message. Please copy manually.');
     });
   };
 
@@ -156,10 +169,8 @@ export const Admin: React.FC = () => {
                     <option value="Mrs.">Mrs.</option>
                     <option value="Miss">Miss</option>
                     <option value="Mr. & Mrs.">Mr. & Mrs.</option>
-                    <option value="Dr.">Dr.</option>
-                    <option value="Prof.">Prof.</option>
                     <option value="Family">Family</option>
-                    <option value="Rev.">Rev.</option>
+                    <option value="Dear">Dear</option>
                   </select>
                 </div>
 
@@ -179,42 +190,7 @@ export const Admin: React.FC = () => {
                 </div>
               </div>
 
-              {/* Event Invitation Selection */}
-              <div>
-                <label className="block text-xs uppercase tracking-[0.2em] font-bold text-stone-500 mb-4 flex items-center gap-2 ml-1">
-                  <Calendar className="w-4 h-4 text-brand-beige-deep" />
-                  Event Invitation
-                </label>
-                <div className="space-y-3">
-                  {[
-                    { id: 'poruwa', label: 'Poruwa Ceremony & Wedding Function', desc: 'Senuri Grand Castello, Divulapitiya' },
-                    { id: 'homecoming', label: 'Homecoming Function', desc: 'Jetwing Blue, Negombo' },
-                    { id: 'both', label: 'Both Functions', desc: 'Access to all wedding & homecoming celebrations' },
-                  ].map((evt) => (
-                    <label
-                      key={evt.id}
-                      onClick={() => setSelectedEvent(evt.id)}
-                      className={`flex items-center justify-between p-5 rounded-2xl border cursor-pointer transition-all ${
-                        selectedEvent === evt.id
-                          ? 'bg-brand-champagne/40 border-brand-beige-deep shadow-md'
-                          : 'bg-white/50 border-stone-200/60 hover:bg-white'
-                      }`}
-                    >
-                      <div className="flex items-center gap-4">
-                        <div className={`w-5 h-5 rounded-full border flex items-center justify-center ${
-                          selectedEvent === evt.id ? 'border-brand-beige-deep bg-brand-beige-deep' : 'border-stone-300 bg-white'
-                        }`}>
-                          {selectedEvent === evt.id && <div className="w-2 h-2 rounded-full bg-white" />}
-                        </div>
-                        <div>
-                          <span className="font-serif font-medium text-stone-800 block text-lg">{evt.label}</span>
-                          <span className="text-xs text-stone-500 font-sans">{evt.desc}</span>
-                        </div>
-                      </div>
-                    </label>
-                  ))}
-                </div>
-              </div>
+              {/* Event Invitation Selection removed */}
 
               {/* Submit Button */}
               <button
@@ -255,11 +231,22 @@ export const Admin: React.FC = () => {
                       {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
                       {copied ? 'Copied!' : 'Copy Link'}
                     </button>
+                    
+                    <button
+                      onClick={() => handleCopyMessage(generatedUrl)}
+                      className="flex-1 bg-brand-gold text-stone-900 py-3.5 px-6 rounded-full font-sans tracking-[0.2em] font-bold text-[11px] uppercase hover:bg-brand-gold/90 transition-all shadow-md flex items-center justify-center gap-2 active:scale-95"
+                    >
+                      <Copy className="w-4 h-4" />
+                      Copy Message
+                    </button>
+                  </div>
+                  
+                  <div className="flex flex-col sm:flex-row gap-3">
                     <a
                       href={generatedUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="bg-stone-100 text-stone-700 py-3.5 px-6 rounded-full font-sans tracking-[0.2em] font-bold text-[11px] uppercase hover:bg-stone-200 transition-all shadow-sm flex items-center justify-center gap-2 border border-stone-200"
+                      className="w-full bg-stone-100 text-stone-700 py-3.5 px-6 rounded-full font-sans tracking-[0.2em] font-bold text-[11px] uppercase hover:bg-stone-200 transition-all shadow-sm flex items-center justify-center gap-2 border border-stone-200"
                     >
                       <ExternalLink className="w-4 h-4" />
                       Test Link

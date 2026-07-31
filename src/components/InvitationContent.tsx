@@ -8,7 +8,6 @@ import { Timeline } from './Timeline';
 import { Countdown } from './Countdown';
 import { RSVPForm } from './RSVPForm';
 import { WishesSection } from './WishesSection';
-import { InviteeBanner } from './InviteeBanner';
 import { DeferredMount } from './DeferredMount';
 
 interface InvitationContentProps {
@@ -55,15 +54,9 @@ export function InvitationContent({
 
       <Hero event={eventParam} />
 
-      {fullInviteeName && (
-        <DeferredMount active={active} delay={80}>
-          <InviteeBanner inviteeName={fullInviteeName} eventLabel={eventLabel} />
-        </DeferredMount>
-      )}
-
       <DeferredMount active={active} delay={120} minHeight="40vh">
         <div className="py-12 sm:py-32 bg-gradient-to-b from-brand-ivory via-white to-brand-ivory relative overflow-hidden">
-          <CoupleDetails />
+          <CoupleDetails inviteeName={fullInviteeName} />
         </div>
       </DeferredMount>
 

@@ -46,7 +46,7 @@ export const Hero: React.FC<HeroProps> = ({ event = 'both' }) => {
     <div ref={containerRef} className="relative min-h-[100dvh] flex items-center justify-center overflow-hidden bg-brand-ivory/30">
       <motion.div
         className="absolute inset-0 z-0 origin-center bg-cover bg-center grayscale"
-        style={{ 
+        style={{
           backgroundImage: 'url("/images/WhatsApp Image 2026-07-16 at 20.09.13.jpeg")',
           ...(useParallax ? { y: y1, scale } : {})
         }}
@@ -75,41 +75,43 @@ export const Hero: React.FC<HeroProps> = ({ event = 'both' }) => {
           transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
           className="flex flex-col items-center"
         >
-          <div className="mb-2 sm:mb-4 inline-block px-6 sm:px-10 py-2.5 sm:py-3 bg-white/40 backdrop-blur-sm border border-brand-gold/50 rounded-full shadow-[0_4px_15px_rgba(131,130,110,0.1)]">
-            <span className="text-stone-900 uppercase tracking-[0.6em] sm:tracking-[0.8em] text-[9px] sm:text-xs font-black block font-sans drop-shadow-sm">
+          <div className="mb-2 sm:mb-4 inline-block px-6 sm:px-10 py-2.5 sm:py-3 bg-gradient-to-r from-[#DFB971]/10 via-white/50 to-[#DFB971]/10 backdrop-blur-md border-[1.5px] border-[#9A7B4F] rounded-full shadow-[0_4px_25px_rgba(223,185,113,0.3)]">
+            <span className="text-stone-900 uppercase tracking-[0.6em] sm:tracking-[0.8em] text-[9px] sm:text-xs font-black flex items-center justify-center gap-2 sm:gap-3 font-sans drop-shadow-[0_0_8px_rgba(223,185,113,0.5)]">
+              <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#DFB971] fill-[#DFB971]/40" />
               The Celebration of Love
+              <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#DFB971] fill-[#DFB971]/40" />
             </span>
           </div>
 
           {/* Upper Divider */}
           <div className="flex items-center justify-center gap-2 mb-6 sm:mb-10 w-full max-w-[280px]">
-            <div className="h-[0.5px] flex-1 bg-brand-gold/60" />
-            <div className="w-1 h-1 rounded-full bg-brand-gold/60" />
-            <Heart className="w-3.5 h-3.5 text-brand-gold stroke-[1.5]" />
-            <div className="w-1 h-1 rounded-full bg-brand-gold/60" />
-            <div className="h-[0.5px] flex-1 bg-brand-gold/60" />
+            <div className="h-[0.5px] flex-1 bg-[#9A7B4F]" />
+            <div className="w-1 h-1 rounded-full bg-[#9A7B4F]" />
+            <Heart className="w-3.5 h-3.5 text-[#9A7B4F] stroke-[1.5]" />
+            <div className="w-1 h-1 rounded-full bg-[#9A7B4F]" />
+            <div className="h-[0.5px] flex-1 bg-[#9A7B4F]" />
           </div>
 
           <div className="relative mb-2 sm:mb-12 w-full flex justify-center py-2 sm:py-10 px-2 overflow-visible">
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[110%] sm:w-[125%] h-[150%] sm:h-[160%] bg-gradient-radial from-brand-ivory/80 via-brand-ivory/50 to-transparent blur-[40px] sm:blur-[70px] rounded-full pointer-events-none" />
 
             <div className="flex flex-col items-center justify-center w-full relative z-10">
-              <h1 className="text-[5rem] sm:text-[9rem] lg:text-[12rem] font-display text-brand-mocha font-extrabold leading-none tracking-normal sm:tracking-tight drop-shadow-sm py-2">
+              <h1 className="text-[5rem] sm:text-[9rem] lg:text-[12rem] font-display text-brand-mocha font-extrabold leading-none tracking-normal sm:tracking-tight drop-shadow-[0_0_15px_rgba(131,130,110,0.4)] py-2">
                 Tharushi
               </h1>
-              
+
               {/* Ampersand Divider */}
               <div className="flex items-center justify-center gap-3 sm:gap-6 w-full max-w-[280px] sm:max-w-md my-4 sm:my-8 relative z-10">
-                <div className="h-[0.5px] flex-1 bg-brand-gold/60" />
-                <div className="w-1.5 h-1.5 rounded-full bg-brand-gold/60" />
-                <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-brand-mocha flex items-center justify-center shadow-lg border border-brand-gold/40">
+                <div className="h-[0.5px] flex-1 bg-[#9A7B4F]" />
+                <div className="w-1.5 h-1.5 rounded-full bg-[#9A7B4F]" />
+                <div className="w-14 h-14 sm:w-20 sm:h-20 rounded-full bg-brand-mocha flex items-center justify-center shadow-[0_0_20px_rgba(223,185,113,0.3)] border-[2px] border-[#DFB971]">
                   <span className="text-brand-ivory italic font-light text-3xl sm:text-5xl font-serif translate-y-px">&amp;</span>
                 </div>
-                <div className="w-1.5 h-1.5 rounded-full bg-brand-gold/60" />
-                <div className="h-[0.5px] flex-1 bg-brand-gold/60" />
+                <div className="w-1.5 h-1.5 rounded-full bg-[#9A7B4F]" />
+                <div className="h-[0.5px] flex-1 bg-[#9A7B4F]" />
               </div>
 
-              <h1 className="text-[5rem] sm:text-[9rem] lg:text-[12rem] font-display text-brand-mocha font-extrabold leading-none tracking-normal sm:tracking-tight drop-shadow-sm py-2">
+              <h1 className="text-[5rem] sm:text-[9rem] lg:text-[12rem] font-display text-brand-mocha font-extrabold leading-none tracking-normal sm:tracking-tight drop-shadow-[0_0_15px_rgba(131,130,110,0.4)] py-2">
                 Ruvintha
               </h1>
             </div>
@@ -123,24 +125,26 @@ export const Hero: React.FC<HeroProps> = ({ event = 'both' }) => {
 
           {/* Lower Decorative Divider */}
           <div className="flex items-center justify-center gap-1 mb-2 sm:mb-14 w-full max-w-[280px] relative z-10">
-             <div className="h-[0.5px] w-8 sm:w-12 bg-brand-gold/60" />
-             <div className="w-1.5 h-1.5 rounded-full border border-brand-gold/60" />
-             <div className="h-[0.5px] w-12 sm:w-20 bg-brand-gold/60" />
-             <Heart className="w-4 h-4 text-brand-gold stroke-[1] fill-brand-gold/30 mx-1" />
-             <div className="h-[0.5px] w-12 sm:w-20 bg-brand-gold/60" />
-             <div className="w-1.5 h-1.5 rounded-full border border-brand-gold/60" />
-             <div className="h-[0.5px] w-8 sm:w-12 bg-brand-gold/60" />
+            <div className="h-[0.5px] w-8 sm:w-12 bg-[#9A7B4F]" />
+            <div className="w-1.5 h-1.5 rounded-full border border-[#9A7B4F]" />
+            <div className="h-[0.5px] w-12 sm:w-20 bg-[#9A7B4F]" />
+            <Heart className="w-4 h-4 text-[#9A7B4F] stroke-[1] fill-[#9A7B4F]/40 mx-1" />
+            <div className="h-[0.5px] w-12 sm:w-20 bg-[#9A7B4F]" />
+            <div className="w-1.5 h-1.5 rounded-full border border-[#9A7B4F]" />
+            <div className="h-[0.5px] w-8 sm:w-12 bg-[#9A7B4F]" />
           </div>
 
           {/* Elegant Date Pill */}
           <div className="inline-block relative group -mt-2 sm:mt-2 w-full sm:w-auto px-4 sm:px-0">
-            <div className="relative px-12 sm:px-20 py-3 sm:py-4 whitespace-nowrap flex items-center justify-center border border-brand-gold bg-white/40 backdrop-blur-md rounded-[2.5rem] shadow-[0_4px_20px_rgba(131,130,110,0.2)] transition-transform duration-500 group-hover:scale-[1.02]">
-              <span className="relative text-[18px] sm:text-2xl font-serif text-stone-900 tracking-[0.4em] sm:tracking-[0.6em] font-bold flex items-center whitespace-nowrap drop-shadow-sm">
+            <div className="relative px-12 sm:px-20 py-3 sm:py-4 whitespace-nowrap flex items-center justify-center border-[1.5px] border-[#9A7B4F] bg-gradient-to-r from-[#DFB971]/10 via-white/50 to-[#DFB971]/10 backdrop-blur-md rounded-[2.5rem] shadow-[0_4px_25px_rgba(223,185,113,0.3)] hover:shadow-[0_0_35px_rgba(223,185,113,0.5)] transition-all duration-500 group-hover:scale-[1.02]">
+              <span className="relative text-[18px] sm:text-2xl font-serif tracking-[0.4em] sm:tracking-[0.6em] font-bold flex items-center gap-3 sm:gap-4 whitespace-nowrap text-stone-900 drop-shadow-[0_0_8px_rgba(223,185,113,0.5)]">
+                <Sparkles className="w-4 h-4 text-[#DFB971] fill-[#DFB971]/40" />
                 26 . 12 . 2026
+                <Sparkles className="w-4 h-4 text-[#DFB971] fill-[#DFB971]/40" />
               </span>
             </div>
-            <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 bg-transparent px-2">
-              <Heart className="w-3 h-3 text-brand-gold fill-brand-gold stroke-none" />
+            <div className="absolute -bottom-2.5 left-1/2 -translate-x-1/2 bg-transparent px-2 drop-shadow-[0_0_8px_rgba(223,185,113,0.6)]">
+              <Heart className="w-4 h-4 text-[#DFB971] fill-[#DFB971] stroke-none" />
             </div>
           </div>
         </motion.div>

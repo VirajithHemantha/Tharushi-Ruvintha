@@ -16,7 +16,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ inviteeName = '', eventName 
     dietaryNotes: '',
   });
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
-  const scriptUrl = "https://script.google.com/macros/s/AKfycbyizQH-uGTCiFC0fc8cn7CwWFDN6JfrMaHcI83acPa3k_peT282eupCPsdjilX38nox/exec";
+  const scriptUrl = "https://script.google.com/macros/s/AKfycby3eYNzmamVazVJj7p5Pqi7CTAXxXVMF1867ds_5JU5WM-NuCER0990ooSmn8uUrDCExQ/exec";
 
   useEffect(() => {
     if (inviteeName) {
@@ -79,8 +79,8 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ inviteeName = '', eventName 
             <div className="hidden lg:block w-16 h-[1px] bg-gradient-to-r from-brand-beige-deep/60 to-transparent" />
           </div>
 
-          <h2 className="text-5xl sm:text-6xl font-display text-stone-800 tracking-tight leading-[1.1] mb-6 drop-shadow-sm">
-            Reserve <span className="italic font-light text-brand-beige-deep">Your</span> Seat
+          <h2 className="text-4xl sm:text-5xl font-display text-stone-800 tracking-tight leading-[1.1] mb-6 drop-shadow-sm [word-spacing:0.15em] sm:[word-spacing:0.25em]">
+            We look forward to <span className="italic font-light text-brand-beige-deep">your</span> response
           </h2>
 
           <p className="text-stone-500/90 font-serif text-lg leading-relaxed mb-6">

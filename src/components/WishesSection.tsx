@@ -28,7 +28,7 @@ export const WishesSection: React.FC<WishesSectionProps> = ({ eventParam = 'both
   const [wishes, setWishes] = useState<Wish[]>([]);
   const [formData, setFormData] = useState({ name: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const scriptUrl = "https://script.google.com/macros/s/AKfycbyizQH-uGTCiFC0fc8cn7CwWFDN6JfrMaHcI83acPa3k_peT282eupCPsdjilX38nox/exec";
+  const scriptUrl = "https://script.google.com/macros/s/AKfycby3eYNzmamVazVJj7p5Pqi7CTAXxXVMF1867ds_5JU5WM-NuCER0990ooSmn8uUrDCExQ/exec";
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

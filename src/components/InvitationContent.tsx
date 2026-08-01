@@ -99,7 +99,7 @@ export function InvitationContent({
 
       <DeferredMount active={active} delay={480} minHeight="30vh">
         <div className="py-12 sm:py-32 bg-gradient-to-b from-brand-ivory to-white relative mt-10 overflow-hidden">
-          <WishesSection eventParam={eventParam} />
+          <WishesSection eventParam={eventParam} inviteeName={fullInviteeName} />
         </div>
       </DeferredMount>
 

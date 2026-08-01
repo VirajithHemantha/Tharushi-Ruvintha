@@ -13,28 +13,12 @@ interface GeneratedLink {
 }
 
 export const Admin: React.FC = () => {
-  const [guestTitle, setGuestTitle] = useState('Mr.');
+  const [guestTitle, setGuestTitle] = useState('Mr. ');
+  const [customTitle, setCustomTitle] = useState('');
   const [guestName, setGuestName] = useState('');
   const selectedEvent = 'both';
   const [generatedUrl, setGeneratedUrl] = useState('');
   const [copied, setCopied] = useState(false);
-  const [recentLinks, setRecentLinks] = useState<GeneratedLink[]>([]);
-
-  useEffect(() => {
-    const saved = localStorage.getItem('wedding_generated_links');
-    if (saved) {
-      try {
-        setRecentLinks(JSON.parse(saved));
-      } catch (e) {
-        console.error('Failed to parse recent links', e);
-      }
-    }
-  }, []);
-
-  const saveRecentLinks = (links: GeneratedLink[]) => {
-    setRecentLinks(links);
-    localStorage.setItem('wedding_generated_links', JSON.stringify(links));
-  };
 
   const handleGenerate = (e: React.FormEvent) => {
     e.preventDefault();
@@ -42,11 +26,13 @@ export const Admin: React.FC = () => {
       toast.error('Please enter a guest name');
       return;
     }
+    
+    const finalTitle = guestTitle === 'Custom' ? customTitle : guestTitle;
 
     // Build URL with params
     const baseUrl = window.location.origin;
     const params = new URLSearchParams();
-    params.append('title', guestTitle);
+    params.append('title', finalTitle);
     params.append('name', guestName.trim());
     params.append('event', selectedEvent);
 
@@ -54,18 +40,6 @@ export const Admin: React.FC = () => {
     setGeneratedUrl(fullUrl);
     setCopied(false);
 
-    // Add to recent links
-    const newLink: GeneratedLink = {
-      id: Date.now().toString(),
-      title: guestTitle,
-      name: guestName.trim(),
-      event: selectedEvent,
-      url: fullUrl,
-      createdAt: new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' })
-    };
-
-    const updatedLinks = [newLink, ...recentLinks.filter(l => l.url !== fullUrl)].slice(0, 15);
-    saveRecentLinks(updatedLinks);
     toast.success('Invitation link generated successfully!');
   };
 
@@ -80,7 +54,8 @@ export const Admin: React.FC = () => {
   };
 
   const generateMessage = (url: string) => {
-    return `Dear ${guestTitle} ${guestName.trim()} ❤️\n\nWith joyful hearts, we warmly invite you to celebrate one of the most special days of our lives as we begin our journey together.\n\nPlease view our wedding invitation and all the event details through the link below 🌐:\n\n${url}\n\nYour presence would truly mean the world to us, and we would be honored to celebrate this beautiful moment together.\n\nWith love,\n❤️ Tharushi & Ruvintha`;
+    const finalTitle = guestTitle === 'Custom' ? customTitle : guestTitle;
+    return `Dear ${finalTitle}${guestName.trim()} ❤️\n\nWith joyful hearts, we warmly invite you to celebrate one of the most special days of our lives as we begin our journey together.\n\nPlease view our wedding invitation and all the event details through the link below 🌐:\n\n${url}\n\nYour presence would truly mean the world to us, and we would be honored to celebrate this beautiful moment together.\n\nWith love,\n❤️ Tharushi & Ruvintha`;
   };
 
   const handleCopyMessage = (url: string) => {
@@ -90,21 +65,6 @@ export const Admin: React.FC = () => {
     }).catch(() => {
       toast.error('Failed to copy message. Please copy manually.');
     });
-  };
-
-  const handleDeleteLink = (id: string) => {
-    const filtered = recentLinks.filter(l => l.id !== id);
-    saveRecentLinks(filtered);
-    toast.success('Link removed from history');
-  };
-
-  const getEventLabel = (evt: string) => {
-    switch (evt) {
-      case 'poruwa': return 'Poruwa Ceremony & Wedding Function';
-      case 'homecoming': return 'Homecoming Function';
-      case 'both': return 'Both Functions';
-      default: return evt;
-    }
   };
 
   return (
@@ -165,13 +125,27 @@ export const Admin: React.FC = () => {
                     onChange={(e) => setGuestTitle(e.target.value)}
                     className="w-full bg-white px-6 py-4 rounded-full border border-stone-200/80 focus:ring-2 focus:ring-brand-beige/30 focus:border-brand-beige-deep/40 outline-none transition-all font-serif text-lg shadow-inner text-stone-800 cursor-pointer"
                   >
-                    <option value="Mr.">Mr.</option>
-                    <option value="Mrs.">Mrs.</option>
-                    <option value="Miss">Miss</option>
-                    <option value="Mr. & Mrs.">Mr. & Mrs.</option>
-                    <option value="Family">Family</option>
-                    <option value="Dear">Dear</option>
+                    <option value="Mr. ">Mr. </option>
+                    <option value="Mrs. ">Mrs. </option>
+                    <option value="Miss ">Miss </option>
+                    <option value="Mr. & Mrs. ">Mr. & Mrs. </option>
+                    <option value="Dr. ">Dr. </option>
+                    <option value="Dr. & Dr. ">Dr. & Dr. </option>
+                    <option value="Prof. ">Prof. </option>
+                    <option value="Family ">Family </option>
+                    <option value="Dear ">Dear </option>
+                    <option value="Custom">Custom (Type your own)</option>
                   </select>
+                  {guestTitle === 'Custom' && (
+                    <input
+                      type="text"
+                      required
+                      placeholder="Type custom title (e.g., Honorable )"
+                      value={customTitle}
+                      onChange={(e) => setCustomTitle(e.target.value)}
+                      className="w-full bg-white px-6 py-4 rounded-full border border-stone-200/80 focus:ring-2 focus:ring-brand-beige/30 focus:border-brand-beige-deep/40 outline-none transition-all font-serif italic text-lg shadow-inner text-stone-800 placeholder:text-stone-400 mt-4"
+                    />
+                  )}
                 </div>
 
                 <div>
@@ -252,74 +226,21 @@ export const Admin: React.FC = () => {
                       Test Link
                     </a>
                   </div>
+
+                  <div className="mt-6">
+                    <h4 className="text-xs uppercase tracking-[0.2em] font-bold text-stone-500 mb-2">Message Preview</h4>
+                    <textarea 
+                      readOnly 
+                      value={generateMessage(generatedUrl)} 
+                      className="w-full h-80 p-4 bg-stone-50 rounded-2xl border border-stone-200/80 font-sans text-sm text-stone-700 shadow-inner resize-none focus:outline-none"
+                    />
+                  </div>
                 </div>
               ) : (
                 <div className="text-center py-12 border-2 border-dashed border-stone-200 rounded-2xl">
                   <p className="text-stone-400 font-serif italic text-base">
                     Fill the form and click generate to create a link.
                   </p>
-                </div>
-              )}
-            </div>
-
-            {/* Recent Links History */}
-            <div className="bg-white/80 backdrop-blur-2xl p-8 rounded-[2.5rem] border border-white shadow-[0_20px_50px_rgba(176,137,104,0.15)] relative overflow-hidden">
-              <div className="flex items-center justify-between mb-6">
-                <h3 className="font-serif text-xl text-stone-800 flex items-center gap-2">
-                  <Calendar className="w-5 h-5 text-brand-beige-deep" />
-                  Recent Links
-                </h3>
-                {recentLinks.length > 0 && (
-                  <span className="text-xs font-sans text-stone-400">{recentLinks.length} generated</span>
-                )}
-              </div>
-
-              {recentLinks.length > 0 ? (
-                <div className="space-y-4 max-h-[360px] overflow-y-auto pr-2 scrollbar-thin">
-                  {recentLinks.map((link) => (
-                    <div 
-                      key={link.id} 
-                      className="p-4 rounded-2xl bg-stone-50 border border-stone-100 hover:border-brand-beige/40 transition-all group relative"
-                    >
-                      <div className="flex justify-between items-start mb-1 pr-8">
-                        <span className="font-serif font-bold text-stone-800 text-base">
-                          {link.title} {link.name}
-                        </span>
-                        <span className="text-[10px] text-stone-400 font-sans">{link.createdAt}</span>
-                      </div>
-                      <span className="inline-block px-2.5 py-0.5 rounded-full bg-brand-champagne/60 text-brand-beige-deep text-[10px] font-medium mb-3">
-                        {getEventLabel(link.event)}
-                      </span>
-                      <div className="flex items-center gap-2 pt-2 border-t border-stone-200/60">
-                        <button
-                          onClick={() => handleCopy(link.url)}
-                          className="text-[11px] font-sans font-bold text-brand-beige-deep hover:underline flex items-center gap-1"
-                        >
-                          <Copy className="w-3 h-3" /> Copy URL
-                        </button>
-                        <span className="text-stone-300">•</span>
-                        <a
-                          href={link.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-[11px] font-sans font-bold text-stone-600 hover:text-stone-900 flex items-center gap-1"
-                        >
-                          <ExternalLink className="w-3 h-3" /> Open
-                        </a>
-                      </div>
-                      <button
-                        onClick={() => handleDeleteLink(link.id)}
-                        className="absolute top-4 right-4 text-stone-400 hover:text-red-500 transition-colors p-1"
-                        title="Delete link"
-                      >
-                        <Trash2 className="w-4 h-4" />
-                      </button>
-                    </div>
-                  ))}
-                </div>
-              ) : (
-                <div className="text-center py-8 border border-dashed border-stone-200 rounded-2xl">
-                  <p className="text-stone-400 font-serif italic text-sm">No recent links generated yet.</p>
                 </div>
               )}
             </div>

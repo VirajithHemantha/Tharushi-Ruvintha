@@ -150,6 +150,7 @@ export const RSVPForm: React.FC<RSVPFormProps> = ({ inviteeName = '', eventName 
                       <option value="2">We are coming! (2 Guests)</option>
                       <option value="3">3 Guests</option>
                       <option value="4">4 Guests</option>
+                      <option value="5">5 Guests</option>
                     </select>
                     <div className="absolute right-6 top-1/2 -translate-y-1/2 pointer-events-none text-brand-beige-deep transition-transform duration-300 group-hover:scale-110">
                       <Heart className="w-5 h-5 fill-brand-beige/30 drop-shadow-sm" />

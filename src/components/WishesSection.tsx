@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Send, Loader2, Sparkles } from 'lucide-react';
 import { toast } from 'sonner';
@@ -12,6 +12,7 @@ interface Wish {
 
 interface WishesSectionProps {
   eventParam?: string;
+  inviteeName?: string;
 }
 
 const getRelativeTime = (date: Date) => {
@@ -24,10 +25,16 @@ const getRelativeTime = (date: Date) => {
   return `${Math.floor(hours / 24)}d ago`;
 };
 
-export const WishesSection: React.FC<WishesSectionProps> = ({ eventParam = 'both' }) => {
+export const WishesSection: React.FC<WishesSectionProps> = ({ eventParam = 'both', inviteeName = '' }) => {
   const [wishes, setWishes] = useState<Wish[]>([]);
-  const [formData, setFormData] = useState({ name: '', message: '' });
+  const [formData, setFormData] = useState({ name: inviteeName, message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  useEffect(() => {
+    if (inviteeName) {
+      setFormData(prev => ({ ...prev, name: inviteeName }));
+    }
+  }, [inviteeName]);
   const scriptUrl = "https://script.google.com/macros/s/AKfycby3eYNzmamVazVJj7p5Pqi7CTAXxXVMF1867ds_5JU5WM-NuCER0990ooSmn8uUrDCExQ/exec";
 
   const handleSubmit = async (e: React.FormEvent) => {

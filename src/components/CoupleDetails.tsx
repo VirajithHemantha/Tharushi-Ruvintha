@@ -28,7 +28,7 @@ export const CoupleDetails: React.FC<CoupleDetailsProps> = ({ inviteeName }) => 
         <div className="text-brand-beige-deep space-y-4 text-center">
           <p className="text-[11px] md:text-[14px] text-stone-600 tracking-[0.2em] md:tracking-[0.3em] uppercase font-medium leading-loose max-w-3xl border-t border-b border-brand-beige/30 py-8 px-4">
             WITH JOYFUL HEARTS,<br/>
-            WE CORDIALLY INVITE<br/>
+            WE CORDIALLY INVITE THE HONOUR OF THE PRESENCE OF<br/>
             <span className="text-brand-gold font-bold text-3xl md:text-4xl my-6 block font-playball drop-shadow-sm normal-case capitalize">{inviteeName || 'Our honoured guest'}</span>
             AS OUR ESTEEMED {isPlural ? 'GUESTS' : 'GUEST'}<br/>
             <br/>
